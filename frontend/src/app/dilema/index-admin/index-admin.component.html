@@ -1,0 +1,48 @@
+<div class="container mt-5">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="d-flex justify-content-center display-5 ">
+          <b>
+            <p class="custom-text text-center mb-3">Lista de Dilemas</p>
+          </b>
+        </div>
+        <div *ngFor="let dilema of dilemas" class="bg-primary rounded d-flex flex-column justify-content-center align-items-center mb-4 w-75 mx-auto my-4">
+          <p class="text-white text-center-large display-5 fs-2"> {{ dilema.texto_situacion }}</p>
+          <p class="text-white text-center-large display-5 fs-2">Pero</p>
+          <p class="text-white text-center-large display-5 fs-2">{{ dilema.texto_problema }}</p>
+          <div class="rounded d-flex flex-column justify-content-center align-items-center mt-2 mb-4">
+            <table class="rounded" style="width: 70%;">
+              <tr>
+           
+                <td class="bg-success text-white bigger-box display-5 fs-3 rounded border-dark" style="width: 50%; text-align: center;">
+                  {{ dilema.contador_aceptada }}
+                  <p> Oprimieron el botón</p>
+                  <p *ngIf="(dilema.contador_aceptada + dilema.contador_denegada) > 0">
+                    {{ ((dilema.contador_aceptada / (dilema.contador_aceptada + dilema.contador_denegada)) * 100).toFixed(2) }}%
+                  </p>
+                  <p *ngIf="(dilema.contador_aceptada + dilema.contador_denegada) === 0">No hay votos aún.</p>
+                </td>
+                <td class="bg-danger text-white bigger-box display-5 fs-3 rounded border-dark" style="width: 50%; text-align: center;">
+                  {{ dilema.contador_denegada }}
+                  <p>No oprimieron el botón</p>
+                  <p *ngIf="(dilema.contador_aceptada + dilema.contador_denegada) > 0">
+                    {{ ((dilema.contador_denegada / (dilema.contador_aceptada + dilema.contador_denegada)) * 100).toFixed(2) }}%
+                  </p>
+                  <p *ngIf="(dilema.contador_aceptada + dilema.contador_denegada) === 0">No hay votos aún.</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" class="bg-white text-black bigger-box display-5 fs-2 rounded border-dark" style="text-align: center;">
+                  {{ dilema.contador_aceptada + dilema.contador_denegada }}
+                  <p>Personas han votado en total.</p>
+                </td>
+              </tr>
+            </table>
+          </div>
+          <button type="button" (click)="deleteDilema(dilema.id)" class="btn btn-danger">Delete</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  

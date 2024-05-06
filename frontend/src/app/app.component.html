@@ -1,0 +1,151 @@
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  <style>
+    @media screen and (min-width: 992px) {
+        .nav-item {
+            line-height: 80px;
+        }
+    }
+
+
+
+    .container-login {
+        background-color: #007bff;
+        color: white;
+        padding: 4rem;
+        border-radius: 0.5rem;
+        width: 100%;
+        max-width: 400px;
+        margin-top: 80px;
+    }
+
+    .container-login h1 {
+        text-align: center;
+        margin-bottom: 2.5rem;
+    }
+
+    .container-login label {
+        color: white;
+    }
+
+    .container-login input {
+        background-color: transparent;
+        border-color: #ced4da;
+        color: white;
+    }
+
+    .container-login button {
+        background-color: white;
+        color: #007bff;
+    }
+
+    .container-login button:hover {
+        background-color: #007bff;
+        color: white;
+    }
+
+
+
+    .margines {
+        margin-bottom: 14px;
+    }
+
+    body {
+        height: 100vh;
+        margin: 0; /
+    }
+
+    footer {
+        margin-top: auto;
+        margin-bottom: 0;
+    }
+
+    .margenNav{
+        margin-top: 2rem;
+    }
+
+    .margenNav2{
+        margin-top: 0.6rem;
+    }
+
+</style>
+</head>
+<nav class="navbar navbar-expand-lg navbar-dark p-2 bg-primary border border-dark mb-5 " id="headerNav">
+  <div class="container-fluid">
+      <a class="navbar-brand d-block d-lg-none" href="#">
+          <img src="../assets/botonNav.png" height="80" />
+          holaaa
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+
+
+          <ul class="navbar-nav mx-auto">
+             
+                  <li class="nav-item">
+                      <a class="nav-link mx-2 px-3 fs-4 mt-2" aria-current="page" *ngIf="!isSignedIn" routerLink="/login" >Iniciar sesión</a>
+                  </li>
+
+                  <li class="nav-item d-none d-lg-block mt-2">
+                    <a class="nav-link mx-2" href="#">
+                        <img src="../assets/botonNav.png" height="80" />
+                    </a>
+                </li>
+                  <li class="nav-item">
+                      <a class="nav-link mx-2 px-3 fs-4 margenNav2"  *ngIf="!isSignedIn"  routerLink="/register">Registrarse</a>
+                  </li>
+
+            
+            
+                 
+                  <li class="nav-item">
+                          <a class="nav-link  margenNav btn btn-link px-3 fs-4"  *ngIf="isSignedIn" (click)="signOut()"routerLink="/home">Cerrar sesión</a>
+                  </li>
+       
+                  <li class="nav-item mt-2">
+                    <a class="nav-link mx-2 px-3 fs-4" routerLink="/dilemas" *ngIf="isSignedIn">Mis dilemas</a>
+                </li>
+  
+                <li class="nav-item mt-2" >
+                    <a *ngIf="isSignedIn && loggedUser.role_id ===1" class="nav-link mx-2 px-3 fs-4" routerLink="/dilemas/admin">Admin</a>
+                </li>
+                
+
+              <li class="nav-item mt-2">
+                  <a class="nav-link mx-2 px-3 fs-4" routerLink="/profile" *ngIf="isSignedIn">Perfil</a>
+              </li>
+
+              <li class="nav-item mt-2">
+                  <a class="nav-link mx-2 px-3 fs-4"  routerLink="/dilemas/create" *ngIf="isSignedIn">Crear dilemas</a>
+              </li>
+          </ul>
+
+
+
+
+      </div>
+  </div>
+</nav>
+
+
+
+
+    
+      
+
+<router-outlet></router-outlet>
+
+<footer class="bg-primary text-white text-center  mt-5 mb-0">
+    <div class="container p-4" style="padding: 8rem 0;">
+        <div class="text-center p-1 rounded" style="background-color: rgba(0, 0, 0, 0.2);">
+            <h3> © 2023 PresionaElBotón.com</h3>
+        </div>
+    </div>
+  </footer>

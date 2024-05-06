@@ -1,0 +1,65 @@
+<style>
+    footer{
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 15px;
+
+    }
+
+    .margin{
+        margin-top: 4rem;
+    }
+</style>
+
+
+<div class="container margin bg-primary p-4 rounded">
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-10 mt-5">
+            <!-- Session Status -->
+       
+            <h1 class="text-light text-center mb-5">Iniciar Sesión</h1>
+            <form class="form-signin" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+              
+                <!-- Errors -->
+                <div *ngIf="errors?.email" class="alert alert-danger mt-3">
+                    {{ errors?.email }}
+                </div>
+                <div *ngIf="errors?.password" class="alert alert-danger mt-3">
+                    {{ errors?.password }}
+                </div>
+                <div *ngIf="errors?.error" class="alert alert-danger mt-3">
+                    {{ errors?.error }}
+                </div>
+
+                <!-- Email Address -->
+                <div class="mb-5 mt-5">
+                    <label for="email" class="form-label text-light">Correo Electrónico</label>
+                    <input type="email" class="form-control" formControlName="email">
+
+                </div>
+
+
+          
+                <!-- Password -->
+                <div class="mb-5 mt-4">
+                    <label for="password" class="form-label text-light">Contraseña</label>
+                    <input type="password" class="form-control" formControlName="password">
+
+                </div>
+
+          
+             
+
+                <!-- Submit Button -->
+
+                <div class="flex items-center justify-end mt-4">
+                        <button type="submit" class="btn btn-light ms-3">Iniciar sesión</button>
+                </div>
+
+
+            </form>
+        </div>
+    </div>
+</div>

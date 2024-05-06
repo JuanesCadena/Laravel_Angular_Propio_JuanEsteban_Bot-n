@@ -1,0 +1,43 @@
+
+<style>
+    footer{
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 15px;
+
+    }
+
+</style>
+
+<div class="container">
+  <div class="d-flex justify-content-center display-5 mt-3">
+    <b>
+        <p class="custom-text text-center mb-4">Crea tu dilema</p>
+    </b>
+</div>
+  <form [formGroup]="dilemaForm" (ngSubmit)="onSubmit()">
+      <div class="container bg-primary container-fluid p-3 mt-2 w-75 border border-dark rounded">
+          <h1 class="text-center text-white mb-4">Situación</h1>
+          <textarea style="background: #007bff; color: white;" formControlName="texto_situacion" id="texto_situacion" class="form-control"></textarea>
+          <div *ngIf="dilemaForm.get('texto_situacion') && (dilemaForm.get('texto_situacion') || dilemaForm.get('texto_situacion'))" class="text-danger">
+              <div class="text-white" *ngIf="dilemaForm.get('texto_situacion')">Texto de la Situación es requerido.</div>
+              <div class="text-white" *ngIf="dilemaForm.get('texto_situacion')">Texto de la Situación debe tener máximo 255 caracteres.</div>
+          </div>
+      </div>
+      <div class="container bg-primary container-fluid p-3 mt-2 w-75 border border-dark rounded">
+          <h1 class="text-center text-white mb-4">Problema</h1>
+          <textarea style="background: #007bff; color: white;" formControlName="texto_problema" id="texto_problema" class="form-control"></textarea>
+          <div *ngIf="dilemaForm.get('texto_problema') && (dilemaForm.get('texto_problema') || dilemaForm.get('texto_problema'))" class="text-danger">
+              <div class="text-white" *ngIf="dilemaForm.get('texto_problema')">Texto del Problema es requerido.</div>
+              <div class="text-white" *ngIf="dilemaForm.get('texto_problema')">Texto del Problema debe tener máximo 255 caracteres.</div>
+          </div>
+      </div>
+      
+
+      <div class="container text-center mt-5">
+        <button type="submit" [disabled]="!dilemaForm.valid" class="btn btn-danger w-50 mt-3 text-white fs-1 rounded">Crear Dilema</button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,59 @@
+<script>
+    const botonImage = document.getElementById('botonImage');
+
+    botonImage.addEventListener('mouseover', function() {
+        this.src = 'images/boton-hover.png';
+    });
+
+    botonImage.addEventListener('mouseout', function() {
+        this.src = 'images/boton.png';
+    });
+</script>
+
+
+<style>
+
+    .image-container {
+        display: inline-block;
+        position: relative;
+    }
+
+
+
+    footer{
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 15px;
+
+    }
+
+    .margin{
+        margin-top: 4rem;
+    }
+
+</style>
+
+<div class="container container-fluid mb-4 mt-4 d-flex justify-content-center">
+
+ 
+    <button type="button" (click)="redirectToResponsePage()" class="text-decoration-none text-white w-100" style="border: none; background: none; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+        <div class="image-container">
+          <img class="img-fluid w-100" style="max-width: 15rem" src="../../assets/boton.png" alt="Boton" id="botonImage">
+        </div>
+      </button>
+</div>
+
+<div class="container bg-primary container-fluid p-3 mt-2 w-75 border border-dark rounded">
+    <h1 class="text-center text-white">{{ randomDilema?.texto_situacion || 'Aún no se ha agregado ningún dilema.' }}</h1>
+</div>
+
+<div class="d-flex justify-content-center display-5 mt-3 mb-3">
+    <p class="custom-text text-center"> <b> Pero </b> </p>
+</div>
+
+<div class="container bg-primary container-fluid p-3 w-75 border border-dark mt-2 rounded">
+    <h1 class="text-center text-white">{{ randomDilema?.texto_problema || 'Aún no se ha agregado ningún dilema.' }}</h1>
+</div>
+
